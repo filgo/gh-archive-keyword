@@ -4,21 +4,15 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Repository\RepoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass=RepoRepository::class)
  * @ORM\Table(name="repo")
  */
 class Repo
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="bigint")
-     * @ORM\GeneratedValue(strategy="NONE")
-     */
-    private int $id;
-
     /**
      * @ORM\Column(type="string")
      */
@@ -28,6 +22,12 @@ class Repo
      * @ORM\Column(type="string")
      */
     public string $url;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="bigint")
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private int $id;
 
     public function __construct(int $id, string $name, string $url)
     {
