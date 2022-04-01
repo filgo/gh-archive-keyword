@@ -29,7 +29,7 @@ class EventController
     }
 
     /**
-     * @Route(path="/api/event/{id}/update", name="api_commit_update", methods={"PUT"})
+     * @Route(path="/api/event/{id}/update", name="api_commit_update", methods={"PUT"}, requirements={"id"="\d+"})
      */
     public function update(Request $request, int $id, ValidatorInterface $validator): Response
     {
