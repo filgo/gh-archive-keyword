@@ -140,6 +140,9 @@
     "phpspec/prophecy": {
         "version": "v1.15.0"
     },
+    "phpspec/prophecy-phpunit": {
+        "version": "v2.0.1"
+    },
     "phpstan/phpdoc-parser": {
         "version": "1.2.0"
     },
@@ -322,6 +325,12 @@
             "src/Controller/.gitignore",
             "src/Kernel.php"
         ]
+    },
+    "symfony/http-client": {
+        "version": "v5.4.5"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v2.5.0"
     },
     "symfony/http-foundation": {
         "version": "v4.4.19"

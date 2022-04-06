@@ -17,6 +17,11 @@ framework:
     php_errors:
         log: true
 
+    http_client:
+        scoped_clients:
+            gharchive.client:
+                base_uri: '%env(resolve:GHARCHIVE_URI)%'
+
 when@test:
     framework:
         test: true
