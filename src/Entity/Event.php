@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Webmozart\Assert\Assert;
 
 /**
  * @ORM\Entity()
@@ -46,6 +45,8 @@ class Event
 
     /**
      * @ORM\Column(type="json", nullable=false, options={"jsonb": true})
+     *
+     * @var array<string, mixed>
      */
     private array $payload;
 
@@ -59,6 +60,9 @@ class Event
      */
     private ?string $comment;
 
+    /**
+     * @param array<string, mixed> $payload
+     */
     public function __construct(int $id, string $type, Actor $actor, Repo $repo, array $payload, \DateTimeImmutable $createAt, ?string $comment)
     {
         $this->id = $id;
@@ -70,7 +74,7 @@ class Event
         $this->createAt = $createAt;
         $this->comment = $comment;
 
-        if ($type === EventType::COMMIT) {
+        if (EventType::COMMIT === $type) {
             $this->count = $payload['size'] ?? 1;
         }
     }
@@ -95,6 +99,9 @@ class Event
         return $this->repo;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function payload(): array
     {
         return $this->payload;
